@@ -1,0 +1,167 @@
+:root {
+  /* Colors */
+  --clr-primary-200: hsl(178, 100%, 50%);
+  --clr-primary-400: rgb(139, 172, 218);
+  --clr-neutral-100: hsl(0, 0%, 100%);
+  --clr-neutral-400: hsl(215, 32%, 27%);
+  --clr-neutral-500: hsl(216, 50%, 16%);
+  --clr-neutral-700: hsl(217, 54%, 11%);
+
+  /* Font sizes */
+  --fs-400: 0.9375rem;
+  /* Fonts */
+  --ff-main: "Outfit", sans-serif;
+  /* Font weights */
+  --fw-300: 300;
+  --fw-400: 400;
+  --fw-600: 600;
+  /* Spacing */
+  --side-padding: 1.5rem;
+  --spacer: 0.9rem;
+  --border-radius: 0.5rem;
+}
+
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Utilities */
+
+.split {
+  display: flex;
+  align-items: center;
+}
+
+/* Components */
+body {
+  /* Just for this project - center stuff */
+  display: grid;
+  place-content: center;
+  min-height: 100vh;
+
+  background-color: var(--clr-neutral-700);
+  padding: var(--side-padding);
+  font-family: var(--ff-main);
+  font-size: var(--fs-400);
+  font-weight: var(--fw-300);
+  color: var(--clr-primary-400);
+  line-height: 1.6;
+}
+
+.card {
+  background-color: var(--clr-neutral-500);
+  padding: var(--side-padding);
+  border-radius: var(--border-radius);
+  max-width: 21.875rem;
+}
+
+.card__img {
+  position: relative;
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  transition: opacity 0.3s ease;
+}
+
+.img__hover {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  z-index: 20;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card__img:is(:hover, :focus) .img__hover {
+  opacity: 1;
+}
+
+.card__img::after {
+  position: absolute;
+  content: "";
+  inset: 0;
+  background: hsla(178, 100%, 50%, 40%);
+  border-radius: var(--border-radius);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 10;
+}
+
+.card__img:is(:hover, :focus)::after {
+  opacity: 1;
+}
+
+.card__content {
+  display: grid;
+  gap: var(--spacer);
+  margin-top: var(--spacer);
+}
+
+.card__title {
+  color: var(--clr-neutral-100);
+  cursor: pointer;
+  margin-top: var(--spacer);
+}
+
+.card__title:is(:hover, :focus),
+.creator:is(:hover, :focus) {
+  color: var(--clr-primary-200);
+  transition: 0.3s ease;
+}
+
+.card__info {
+  justify-content: space-between;
+  padding-bottom: var(--spacer);
+  border-bottom: 1px solid var(--clr-neutral-400);
+}
+
+.card__info img {
+  padding-right: 0.5rem;
+}
+
+.card__price {
+  color: var(--clr-primary-200);
+  font-weight: var(--fw-400);
+}
+
+.card__creator img {
+  max-width: 28px;
+  margin-right: var(--spacer);
+  border: 1px solid var(--clr-neutral-100);
+  border-radius: 50%;
+}
+
+.card__creator p {
+  font-weight: var(--fw-400);
+}
+
+.creator {
+  color: var(--clr-neutral-100);
+  cursor: pointer;
+}
